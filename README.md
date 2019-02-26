@@ -1,4 +1,6 @@
 # cen3031-team-project
-Ben Gorman
-Henry Smith
-Gonzalo
+Jaxson Aldrich <br/>
+Ben Gorman <br/>
+Henry Smith <br/>
+Gonzalo <br/>
+
