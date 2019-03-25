@@ -3,7 +3,7 @@
 
 module.exports = {
   db: {
-    uri: 'mongodb://bengorman:83mqwRMmmKDjrBU@ds147975.mlab.com:47975/cen3031',
+    uri: 'mongodb://User:CEN3031@ds219055.mlab.com:19055/tweet_data_app',
   },
   port: 8080
 };
