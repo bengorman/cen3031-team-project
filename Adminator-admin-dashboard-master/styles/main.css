@@ -1,0 +1,35 @@
+#searchBar {
+  margin: 15px 10px;
+}
+
+.tableWrapper {
+  max-height: 400px;
+  overflow: auto;
+}
+
+button {
+  background-color: Transparent;
+  border: none;
+}
+
+h1, h2, h3 {
+  color: orange;
+}
+
+body {
+  background-color: lightblue;
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background-color: blue;
+   color: orange;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: black;
+}
+
+.table {
+  background-color: orange;
+  color: blue;
+}
