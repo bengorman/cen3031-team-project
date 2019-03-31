@@ -10,7 +10,9 @@
     "express": "^4.13.3",
     "mongoose": "^4.2.9",
     "morgan": "^1.6.1",
-    "request": "^2.67.0"
+    "request": "^2.67.0",
+    "safe-buffer": "^5.1.2",
+    "twitter": "^1.7.1"
   },
   "devDependencies": {
     "should": "^7.1.1",
