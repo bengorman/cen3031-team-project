@@ -1,23 +1,24 @@
 angular.module('login').controller('LoginController', ['$scope', 'Users', '$location','$window',
-  function($scope, $location, $window, Users) {
-      $scope.form = {
+  function($scope, Users, $location, $window) {
+      $scope.newUser = {
         email: null,
-	username: null,
+	      username: null,
         password: null
     };
 
     $scope.addUser = function() {
-     $scope.users.push($scope.newUser);
      Users.create($scope.newUser).then(function() {
        $scope.newUser = {};
+       var newLocation = location.href.substring(0, location.href.lastIndexOf("/"));
+       $window.location.href = newLocation+'/dashboard.html';
      }, function(err) {
        console.log(err);
      })
     };
-    
+
     $scope.goLogin = function() {
-	var newLocation = location.href.substring(0, location.href.lastIndexOf("/"));
-        $window.location.href = newLocation+'/dashboard.html';
+	     var newLocation = location.href.substring(0, location.href.lastIndexOf("/"));
+       $window.location.href = newLocation+'/dashboard.html';
     };
   }
 ]);
