@@ -1,4 +1,4 @@
-angular.module('login', []).factory('User', function($http) {
+angular.module('login', []).factory('Users', function($http) {
   var methods = {
   	create: function(user) {
   	  return $http.post('localhost:8080/api/users/', user);

@@ -1,6 +1,6 @@
-angular.module('login').controller('LoginController', ['$scope', 'Users', '$location','$window',
+angular.module('login').controller('LoginController', ['$scope','$location','$window', 'Users',
   function($scope, $location, $window, Users) {
-      $scope.form = {
+      $scope.newUser = {
         email: null,
 	username: null,
         password: null
