@@ -31,11 +31,11 @@
 <!-- signup form  -->
 <!-- ============================================================== -->
 
-<body>
+<body ng-app="directoryApp">
     <!-- ============================================================== -->
     <!-- signup form  -->
     <!-- ============================================================== -->
-    <form class="splash-container">
+    <form class="splash-container" ng-controller="LoginController">
         <div class="card">
             <div class="card-header">
                 <h3 class="mb-1">Registrations Form</h3>
@@ -43,19 +43,19 @@
             </div>
             <div class="card-body">
                 <div class="form-group">
-                    <input class="form-control form-control-lg" type="text" name="nick" required="" placeholder="Username" autocomplete="off">
+                    <input class="form-control form-control-lg" ng-model="newUser.name" type="text" name="nick" required="" placeholder="Username" autocomplete="off">
                 </div>
                 <div class="form-group">
-                    <input class="form-control form-control-lg" type="email" name="email" required="" placeholder="E-mail" autocomplete="off">
+                    <input class="form-control form-control-lg" ng-model="newUser.email" type="email" name="email" required="" placeholder="E-mail" autocomplete="off">
                 </div>
                 <div class="form-group">
-                    <input class="form-control form-control-lg" id="pass1" type="password" required="" placeholder="Password">
+                    <input class="form-control form-control-lg" ng-model="newUser.password" id="pass1" type="password" required="" placeholder="Password">
                 </div>
                 <div class="form-group">
                     <input class="form-control form-control-lg" required="" placeholder="Confirm">
                 </div>
                 <div class="form-group pt-2">
-                    <button class="btn btn-block btn-primary" type="submit">Register My Account</button>
+                    <button class="btn btn-block btn-primary" ng-click="addUser()" type="submit">Register My Account</button>
                 </div>
                 <div class="form-group">
                     <label class="custom-control custom-checkbox">
@@ -68,6 +68,12 @@
             </div>
         </div>
     </form>
+    <script src="../assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers/loginController.js"></script>
 </body>
 
  
