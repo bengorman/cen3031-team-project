@@ -6,14 +6,16 @@
   "author": "Medhir Bhargava",
   "license": "MIT",
   "dependencies": {
-    "body-parser": "^1.14.1",
-    "express": "^4.13.3",
-    "mongoose": "^4.2.9",
-    "morgan": "^1.6.1",
+    "body-parser": "^1.18.3",
+    "crypto-js": "^3.1.9-1",
+    "express": "^4.16.4",
+    "module": "^1.2.5",
+    "mongoose": "^4.13.18",
+    "morgan": "^1.9.1",
     "request": "^2.67.0"
   },
   "devDependencies": {
     "should": "^7.1.1",
-    "supertest": "^1.1.0"
+    "supertest": "^1.2.0"
   }
 }
