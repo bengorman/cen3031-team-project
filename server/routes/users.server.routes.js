@@ -8,7 +8,7 @@ var users = require('../controllers/users.server.controller.js'),
   Take note that it is possible for different controller functions to handle requests to the same route.
  */
 router.route('/')
-  .get(users.read)
+  .put(users.read)
   .post(users.create);
 
 
