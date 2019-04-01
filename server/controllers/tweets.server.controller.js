@@ -45,8 +45,7 @@ exports.keyword = function(req, res) {
 
   T.get('search/tweets', params, function(err, data, response) {
     if(!err){
-      var statuses = data.statuses;
-      res.json(statuses);
+      res.json(data);
     } else {
         console.log(err);
         res.status(400).send(err);

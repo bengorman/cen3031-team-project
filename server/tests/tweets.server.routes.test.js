@@ -38,7 +38,7 @@ describe('Tweets CRUD tests', function() {
 
 
   it('Should be able to make calls with search api', function(done) {
-    var search = { query: 'miami'};
+    var search = { query: 'basketball'};
 
     agent.put('/api/tweets')
       .send(search)
@@ -46,11 +46,11 @@ describe('Tweets CRUD tests', function() {
       .end(function(err, res) {
         should.not.exist(err);
         should.exist(res);
-        statuses = res.body;
+        data = res.body;
         for(var i = 0; i < data.statuses.length; i++)
         {
           var obj = data.statuses[i];
-          console.log(obj.user.name);
+          console.log(obj);
         }
         done();
       });
