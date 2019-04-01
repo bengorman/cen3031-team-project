@@ -73,9 +73,9 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="trends.html">Trends Search</a>
                                         </li>
-					<li class="nav-item">
+	                                      <!--<li class="nav-item">
                                             <a class="nav-link" href="keyword.html">Keyword Search</a>
-                                        </li>
+                                        </li>-->
                                     </ul>
                                 </div>
                             </li>
@@ -117,21 +117,24 @@
                             <div class="col-xl-3 col-lg-12 col-md-6 col-sm-12 col-12" ng-controller="TweetController">
 				<div class="card">
 					<div id="custom-search" class="top-search-bar">
-					<input class="form-control" ng-model="locationSearch.name" type="text" placeholder="Search..">
-          <button type="submit" ng-click="getTrends()">Search</button>
+  					<input class="form-control" ng-model="locationSearch.name" type="text" placeholder="Search..">
+            <button type="submit" ng-click="getTrends()">Search</button>
+            <div ng-show="unavailable" class="alert alert-warning" role="alert">
+              <strong>Twitter trends not available for selected location</strong>
+            </div>
 					</div>
 				</div>
 				<div class="card">
-                                    <h5 class="card-header">Top Ten Trends in Location</h5>
+                                    <h5 class="card-header">Top Ten Trends in {{ currentLocation.name || "Location" }}</h5>
                                     <div class="card-body p-0">
                                         <ul class="country-sales list-group list-group-flush" ng-repeat="trend in (trends | orderBy: '-tweet_volume'|nullToEnd:'tweet_volume')">
                                             <li class="country-sales-content list-group-item"><span class="mr-2"></span>
-                                                <span class="">{{trend.name}}</span><span class="float-right text-dark">{{trend.tweet_volume}}</span>
+                                                <span class="">{{ trend.name }}</span><span class="float-right text-dark">{{ trend.tweet_volume }}</span>
                                             </li>
                                         </ul>
                                     </div>
                                     <div class="card-footer text-center">
-                                        <a href="#" class="btn-primary-link">View Details</a>
+                                        <!--<a href="#" class="btn-primary-link">View Details</a>-->
                                     </div>
                                 </div>
                             </div>

@@ -4,14 +4,19 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
     $scope.keywordSearch = { query: "" }
     $scope.trends = [];
     $scope.tweets = [];
+    $scope.unavailable = false;
+    $scope.currentLocation = { name: "" };
 
     $scope.getTrends = function() {
-      console.log("SUBMIT");
       Tweets.searchLocation($scope.locationSearch).then(function(res) {
-        console.log(res.data);
+        $scope.unavailable = false;
+        $scope.currentLocation.name = $scope.locationSearch.name;
         $scope.trends = res.data;
       }, function(err) {
         console.log(err);
+        if(err.status === 400) {
+          $scope.unavailable = true;
+        }
       });
     };
 
