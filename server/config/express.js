@@ -4,6 +4,7 @@ var path = require('path'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
     config = require('./config'),
+    tweetsRouter = require('../routes/tweets.server.routes');
     usersRouter = require('../routes/users.server.routes');
 
 module.exports.init = function() {
@@ -26,6 +27,7 @@ module.exports.init = function() {
 
   /**TODO
   Use the listings router for requests to the api */
+  app.use('/api/tweets',tweetsRouter);
   app.use('/api/users', usersRouter);
 
   /**TODO
