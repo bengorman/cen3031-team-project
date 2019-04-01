@@ -4,7 +4,7 @@ var path = require('path'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
     config = require('./config'),
-    listingsRouter = require('../routes/listings.server.routes');
+    tweetsRouter = require('../routes/tweets.server.routes');
 
 module.exports.init = function() {
   //connect to database
@@ -26,7 +26,7 @@ module.exports.init = function() {
 
   /**TODO
   Use the listings router for requests to the api */
-  app.use('/api/listings', listingsRouter);
+  app.use('/api/tweets',tweetsRouter);
 
   /**TODO
   Go to homepage for all routes not specified */
