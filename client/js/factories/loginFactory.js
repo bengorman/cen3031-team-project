@@ -5,7 +5,7 @@ angular.module('login', []).factory('Users', function($http) {
     },
 
     verify: function(user) {
-      return $http.get('localhost:8080/api/users/', user);
+      return $http.put('http://localhost:8080/api/users/', user);
     }
   };
 
