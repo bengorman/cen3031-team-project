@@ -1,13 +1,12 @@
 var should = require('should'),
     request = require('supertest'),
-    express = require('../config/express'),
-    Listing = require('../models/listings.server.model.js');
+    express = require('../config/express');
 
 /* Global variables */
 var app, agent, listing, id;
 
 /* Unit tests for testing server side routes for the listings API */
-describe('Listings CRUD tests', function() {
+describe('Tweets CRUD tests', function() {
 
   this.timeout(10000);
 
@@ -18,25 +17,46 @@ describe('Listings CRUD tests', function() {
     done();
   });
 
-  it('Should be able to make calls with trends api', function(done) {
-    var location = 'worldwide';
+  /*it('Should be able to make calls with trends api', function(done) {
+    var location = { name: 'miami'};
 
-    agent.post('api/tweets')
+    agent.post('/api/tweets')
       .send(location)
       .expect(200)
       .end(function(err, res) {
         should.not.exist(err);
         should.exist(res);
-        res.body.should.have.length(50);
         trends = res.body;
         for(var i = 0; i<trends.length; i++)
         {
           var obj = trends[i];
-          console.log(obj);
+          console.log(obj.name);
+        }
+        done();
+      });
+  });*/
+
+
+  it('Should be able to make calls with search api', function(done) {
+    var search = { query: 'miami'};
+
+    agent.put('/api/tweets')
+      .send(search)
+      .expect(200)
+      .end(function(err, res) {
+        should.not.exist(err);
+        should.exist(res);
+        statuses = res.body;
+        for(var i = 0; i < data.statuses.length; i++)
+        {
+          var obj = data.statuses[i];
+          console.log(obj.user.name);
         }
         done();
       });
   });
+
+
 });
 /*  it('should it able to retrieve all listings', function(done) {
     agent.get('/api/listings')

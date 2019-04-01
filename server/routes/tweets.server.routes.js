@@ -8,7 +8,7 @@ var tweets = require('../controllers/tweets.server.controller.js'),
   Take note that it is possible for different controller functions to handle requests to the same route.
  */
 router.route('/')
-  //.put(tweets.search)
+  .put(tweets.keyword)
   .post(tweets.location);
 
 
