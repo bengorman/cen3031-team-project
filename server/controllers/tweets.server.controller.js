@@ -8,7 +8,10 @@ var Twitter = require('twitter'),
 
 exports.location = function(req, res) {
   var place = req.body.name; //Can be changed via user input
-  WOEID.findOne({name: (place.charAt(0).toUpperCase() + place.slice(1).toLowerCase())}, function(err, woeid) {
+  WOEID.findOne({name: place.toLowerCase()
+    .split(' ')
+    .map((a) => a.charAt(0).toUpperCase() + a.substring(1))
+    .join(' ')}, function(err, woeid) {
     if(err) {
       console.log(err);
       res.status(400).send(err);
