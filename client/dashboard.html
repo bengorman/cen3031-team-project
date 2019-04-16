@@ -105,9 +105,7 @@
                                 <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Search</a></li>
-                                            <li class="breadcrumb-item active" aria-current="page">Trends Search</li>
-					    <li class="breadcrumb-item active" aria-current="page">Keyword Search</li>
+                                            <li class="breadcrumb-item"><a href="#dashboard.html" class="breadcrumb-link">Dashboard</a></li>
                                         </ol>
                                     </nav>
                                 </div>
@@ -128,7 +126,7 @@
                                         </ul>
                                     </div>
 				<div class="card">
-				<class="form-control" ng-model="locationSearch.name" type="text" value="Worldwide">
+				<input class="form-control" ng-model="locationSearch.name" type="text" value="Worldwide">
 				<button type="submit" ng-click="getTrends()">Show Trends</button>
 				<div ng-show="unavailable" class="alert alert-warning" role="alert">
 					<strong>Twitter trends not available for selected location</strong>
