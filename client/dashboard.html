@@ -18,7 +18,7 @@
     <title>Concept - Bootstrap 4 Admin Dashboard Template</title>
 </head>
 
-<body>
+<body ng-app="directoryApp">
     <!-- ============================================================== -->
     <!-- main wrapper -->
     <!-- ============================================================== -->
@@ -73,6 +73,9 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="trends.html">Trends Search</a>
                                         </li>
+					<li class="nav-item">
+                                            <a class="nav-link" href="keyword.html">Keyword Search</a>
+                                        </li>
 					                              <!--<li class="nav-item">
                                             <a class="nav-link" href="keyword.html">Keyword Search</a>
                                         </li>-->
@@ -105,6 +108,7 @@
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Search</a></li>
                                             <li class="breadcrumb-item active" aria-current="page">Trends Search</li>
+					    <li class="breadcrumb-item active" aria-current="page">Keyword Search</li>
                                         </ol>
                                     </nav>
                                 </div>
@@ -114,14 +118,27 @@
                     <!-- ============================================================== -->
                     <!-- end pageheader  -->
                     <!-- ============================================================== -->
-                            <div class="col-xl-3 col-lg-12 col-md-6 col-sm-12 col-12">
+                             <div class="col-xl-3 col-lg-12 col-md-6 col-sm-12 col-12" ng-controller="TweetController">
 				<div class="card">
-                                    <h5 class="card-header">Top Trends Worldwide</h5>
+                                    <h5 class="card-header">Top Ten Trends Worldwide</h5>
                                     <div class="card-body p-0">
+                                        <ul class="country-sales list-group list-group-flush" ng-repeat="trend in (trends | orderBy: '-tweet_volume'|nullToEnd:'tweet_volume')">
+                                            <li class="country-sales-content list-group-item"><span class="mr-2"></span>
+                                                <span class="">{{ trend.name }}</span><span class="float-right text-dark">{{ trend.tweet_volume }}</span>
+                                            </li>
+                                        </ul>
                                     </div>
+				<div class="card">
+				<class="form-control" ng-model="locationSearch.name" type="text" value="Worldwide">
+				<button type="submit" ng-click="getTrends()">Show Trends</button>
+				<div ng-show="unavailable" class="alert alert-warning" role="alert">
+					<strong>Twitter trends not available for selected location</strong>
+				</div>
                                     <div class="card-footer text-center">
+                                        <!--<a href="#" class="btn-primary-link">View Details</a>-->
                                     </div>
                                 </div>
+                            </div>
 				<div class="card">
                                     <div class="card-body p-0">
                                         <a class="twitter-timeline" href="https://twitter.com/TwitterDev/timelines/539487832448843776?ref_src=twsrc%5Etfw">National Park Tweets</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -177,6 +194,8 @@
     <script src="assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
     <script src="assets/vendor/charts/c3charts/C3chartjs.js"></script>
     <script src="assets/libs/js/dashboard-ecommerce.js"></script>
+    <script src="js/factories/tweetFactory.js"></script>
+    <script src="js/controllers/tweetController.js"></script>
 </body>
 
 </html>

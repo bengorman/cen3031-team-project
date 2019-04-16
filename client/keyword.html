@@ -73,6 +73,9 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="trends.html">Trends Search</a>
                                         </li>
+					<li class="nav-item">
+                                            <a class="nav-link" href="keyword.html">Keyword Search</a>
+                                        </li>
 	                                      <!--<li class="nav-item">
                                             <a class="nav-link" href="keyword.html">Keyword Search</a>
                                         </li>-->
@@ -135,9 +138,77 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- ============================================================== -->
-                            <!-- end sales traffice country source  -->
-                            <!-- ============================================================== -->
+                                               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <div class="card">
+                            <h5 class="card-header">Popular in Locations (Geocode)</h5>
+                            <div class="card-body">
+                                <div class="ct-chart-multilines ct-golden-section"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!--end multi line chart  -->
+                    <!-- ============================================================== -->
+                </div>
+                <div class="row">
+                    <!-- ============================================================== -->
+                    <!--multi line lables chart  -->
+                    <!-- ============================================================== -->
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                            <div class="card">
+                                <h5 class="card-header">Top Influencers</h5>
+                                <div class="card-body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">First</th>
+                                                <th scope="col">Last</th>
+                                                <th scope="col">Handle</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td>Jacob</td>
+                                                <td>Thornton</td>
+                                                <td>@fat</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">3</th>
+                                                <td>Larry</td>
+                                                <td>the Bird</td>
+                                                <td>@twitter</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    <!-- ============================================================== -->
+                    <!-- end multi line lables chart  -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- peak circle using the draw  -->
+                    <!-- ============================================================== -->
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <div class="card">
+                            <h5 class="card-header">Frequency of Interactions</h5>
+                            <div class="card-body">
+                                <div class="ct-chart-events ct-golden-section"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- end peak circle using the draw  -->
+                    <!-- ============================================================== -->
+                </div>
                         </div>
                     </div>
                 </div>
@@ -180,6 +251,10 @@
     <script src="js/app.js"></script>
     <script src="js/factories/tweetFactory.js"></script>
     <script src="js/controllers/tweetController.js"></script>
+    <script src="../assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <script src="../assets/vendor/charts/chartist-bundle/chartist.min.js"></script>
+    <script src="../assets/vendor/charts/chartist-bundle/Chartistjs.js"></script>
+    <script src="../assets/libs/js/main-js.js"></script>
 </body>
 
 </html>
