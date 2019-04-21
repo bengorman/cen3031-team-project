@@ -43,7 +43,7 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
                             }]
                         },
                              legend: {
-                        display: true,
+                        display: false,
                         position: 'bottom',
 
                         labels: {
@@ -60,6 +60,10 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
                                 fontFamily: 'Circular Std Book',
                                 fontColor: '#71748d',
                             }
+			    scaleLabel: {
+					display: true,
+					labelString: 'Trends',
+				}
                         }],
                         yAxes: [{
                             ticks: {
@@ -67,6 +71,10 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
                                 fontFamily: 'Circular Std Book',
                                 fontColor: '#71748d',
                             }
+			    scaleLabel: {
+					display: true,
+					labelString: 'Tweet Volume',
+				}
                         }]
                     }
                 }
