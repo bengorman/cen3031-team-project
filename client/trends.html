@@ -125,7 +125,7 @@
 					</div>
 				</div>
 				<div class="card">
-                                    <h5 class="card-header">Top Ten Trends in {{ currentLocation.name || "Location" }}</h5>
+                                    <h5 class="card-header">Top Ten Trends In {{ currentLocation.name || "Location" }}</h5>
                                     <div class="card-body p-0">
                                         <ul class="country-sales list-group list-group-flush" ng-repeat="trend in (trends | orderBy: '-tweet_volume'|nullToEnd:'tweet_volume')">
                                             <li class="country-sales-content list-group-item"><span class="mr-2"></span>

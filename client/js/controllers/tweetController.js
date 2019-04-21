@@ -6,6 +6,7 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
     $scope.tweets = [];
     $scope.unavailable = false;
     $scope.currentLocation = { name: "" };
+    $scope.currentKeyword = { query: "" }
 
     $scope.labels1 = $scope.trends.name;
     $scope.series1 = ['Location Trends'];
@@ -27,8 +28,8 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
     $scope.getTweets = function() {
       Tweets.searchKeyword($scope.keywordSearch).then(function(res) {
         console.log(res.data);
-        tweets = res.data.statuses;
-        console.log(tweets);
+        $scope.tweets = res.data.statuses;
+        $scope.currentKeyword.query = $scope.keywordSearch.query;
       }, function(err) {
         console.log(err);
       });
