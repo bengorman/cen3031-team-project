@@ -19,13 +19,13 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
                 var myChart = new Chart(ctx, {
                     type: 'bar',
                     data: {
-                        labels: names, 
+                        labels: names.slice(0,10), 
                         datasets: [{
                             label: 'Trends',
-                            data: volumes,
+                            data: volumes.slice(0,10),
                            backgroundColor: "rgba(89, 105, 255,0.5)",
                                     borderColor: "rgba(89, 105, 255,0.7)",
-                            borderWidth: 2,
+                            borderWidth: 1,
                         }]
                     },
                     options: {
@@ -41,21 +41,21 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
                         labels: {
                             fontColor: '#71748d',
                             fontFamily: 'Circular Std Book',
-                            fontSize: 14,
+                            fontSize: 10,
                         }
                     },
 
                     scales: {
                         xAxes: [{
                             ticks: {
-                                fontSize: 14,
+                                fontSize: 10,
                                 fontFamily: 'Circular Std Book',
                                 fontColor: '#71748d',
                             }
                         }],
                         yAxes: [{
                             ticks: {
-                                fontSize: 14,
+                                fontSize: 10,
                                 fontFamily: 'Circular Std Book',
                                 fontColor: '#71748d',
                             }
