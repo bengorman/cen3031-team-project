@@ -59,7 +59,7 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
                                 fontSize: 10,
                                 fontFamily: 'Circular Std Book',
                                 fontColor: '#71748d',
-                            }
+                            },
 			    scaleLabel: {
 					display: true,
 					labelString: 'Trends',
@@ -70,7 +70,7 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
                                 fontSize: 10,
                                 fontFamily: 'Circular Std Book',
                                 fontColor: '#71748d',
-                            }
+                            },
 			    scaleLabel: {
 					display: true,
 					labelString: 'Tweet Volume',
