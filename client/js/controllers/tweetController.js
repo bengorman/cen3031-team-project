@@ -17,16 +17,16 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
                 var myChart = new Chart(ctx, {
                     type: 'bar',
                     data: {
-                        labels: $scope.trends.name,
+                        labels: ['test', 'test2'],
                         datasets: [{
                             label: $scope.trends[0].name,
-                            data: $scope.trends[0].tweet_volume,
+                            data: [$scope.trends[0].tweet_volume],
                            backgroundColor: "rgba(89, 105, 255,0.5)",
                                     borderColor: "rgba(89, 105, 255,0.7)",
                             borderWidth: 2
                         }, {
                             label: $scope.trends[1].name,
-                            data: $scope.trends[1].tweet_volume,
+                            data: [$scope.trends[1].tweet_volume],
                            backgroundColor: "rgba(255, 64, 123,0.5)",
                                     borderColor: "rgba(255, 64, 123,0.7)",
                             borderWidth: 2
