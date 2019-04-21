@@ -24,7 +24,7 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
       console.log("getTweets() called...");
       Tweets.searchKeyword($scope.keywordSearch).then(function(res) {
         console.log(res.data);
-        tweets = res.data;
+        tweets = res.data.statuses;
       }, function(err) {
         console.log(err);
       });

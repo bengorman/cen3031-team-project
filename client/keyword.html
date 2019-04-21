@@ -122,11 +122,11 @@
 					</div>
 				</div>
 				<div class="card">
-                                    <h5 class="card-header">Top Tweets</h5>
+                                    <h5 class="card-header">Top Tweets for Keyword</h5>
                                     <div class="card-body p-0">
-                                        <ul class="country-sales list-group list-group-flush">
+                                        <ul class="country-sales list-group list-group-flush" ng-repeat="tweet in tweets">
                                             <li class="country-sales-content list-group-item"><span class="mr-2"></span>
-                                                <span class=""></span><span class="float-right text-dark"></span>
+                                                <span class="">{{ tweet.text }}</span><span class="float-right text-dark"></span>
                                             </li>
                                         </ul>
                                     </div>
