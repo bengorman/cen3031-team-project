@@ -25,8 +25,13 @@ angular.module('login').controller('LoginController', ['$scope', 'Users', '$loca
        console.log(err);
        if(err.data === "There is already an account with this username") {
          $scope.takenUsername = true;
-       } else if(err.data === "There is already an account with this email") {
+       } else {
+         $scope.takenUsername = false;
+       }
+       if(err.data === "There is already an account with this email") {
          $scope.takenEmail = true;
+       } else {
+         $scope.takenEmail = false;
        }
      });
     };
