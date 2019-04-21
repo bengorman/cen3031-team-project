@@ -11,78 +11,214 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
     $scope.series1 = ['Location Trends'];
     $scope.data1 = $scope.trends.tweet_volume;
 
-    $scope.generateGraph = function() {
-        if ($('#chartjs_bar').length) {
-		var names = $scope.trends.map(a => a.name);
-		var volumes = $scope.trends.map(b => b.tweet_volume);
-                var ctx = document.getElementById("chartjs_bar").getContext('2d');
-                var myChart = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: names.slice(0,10),
-                        datasets: [{
-                            data: volumes.slice(0,10),
-                           backgroundColor: "rgba(89, 105, 255,0.5)",
-                                    borderColor: "rgba(89, 105, 255,0.7)",
-                            borderWidth: 1,
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            yAxes: [{
-				scaleLabel: {
-					display: true,
-					labelString: 'Tweet Volume',
-				}
-                            }],
-			    xAxes: [{
-				scaleLabel: {
-					display: true,
-					labelString: 'Trends',
-				}
-                            }]
-                        },
-                             legend: {
-                        display: false,
-                        position: 'bottom',
-
-                        labels: {
-                            fontColor: '#71748d',
-                            fontFamily: 'Circular Std Book',
-                            fontSize: 15,
-                        }
-                    },
-
-                    scales: {
-                        xAxes: [{
-                            ticks: {
-                                fontSize: 10,
-                                fontFamily: 'Circular Std Book',
-                                fontColor: '#71748d',
-                                autoSkip: false,
-                            },
-			    scaleLabel: {
-					display: true,
-					labelString: 'Trends',
-				}
-                        }],
-                        yAxes: [{
-                            ticks: {
-                                fontSize: 10,
-                                fontFamily: 'Circular Std Book',
-                                fontColor: '#71748d',
-                            },
-			    scaleLabel: {
-					display: true,
-					labelString: 'Tweet Volume',
-				}
-                        }]
-                    }
+    $scope.generateTrendBarGraph = function() {
+      if ($('#trend_bar').length) {
+        var names = $scope.trends.map(a => a.name);
+        var volumes = $scope.trends.map(b => b.tweet_volume);
+        var ctx = document.getElementById("trend_bar").getContext('2d');
+        var myChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: names.slice(0,10),
+            datasets: [{
+              data: volumes.slice(0,10),
+              backgroundColor: "rgba(89, 105, 255,0.5)",
+              borderColor: "rgba(89, 105, 255,0.7)",
+              borderWidth: 1,
+            }]
+          },
+          options: {
+            scales: {
+              yAxes: [{
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Tweet Volume',
                 }
-
-
-                });
+              }],
+              xAxes: [{
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Trends',
+                }
+              }]
+            },
+            legend: {
+              display: false,
+              position: 'bottom',
+              labels: {
+                fontColor: '#71748d',
+                fontFamily: 'Circular Std Book',
+                fontSize: 15,
+              }
+            },
+            scales: {
+              xAxes: [{
+                ticks: {
+                  fontSize: 10,
+                  fontFamily: 'Circular Std Book',
+                  fontColor: '#71748d',
+                  autoSkip: false,
+                },
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Trends',
+                }
+              }],
+              yAxes: [{
+                ticks: {
+                  fontSize: 10,
+                  fontFamily: 'Circular Std Book',
+                  fontColor: '#71748d',
+                },
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Tweet Volume',
+                }
+              }]
             }
+          }
+        });
+      }
+    };
+
+    $scope.generateKeywordRetweetBarGraph = function() {
+      if ($('#keyword_retweet_bar').length) {
+        var handles = $scope.trends.map(a => a.name);
+        var retweets = $scope.trends.map(b => b.retweet_count);
+        var ctx = document.getElementById("keyword_retweet_bar").getContext('2d');
+        var myChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: handles,
+            datasets: [{
+              data: retweets,
+              backgroundColor: "rgba(89, 105, 255,0.5)",
+              borderColor: "rgba(89, 105, 255,0.7)",
+              borderWidth: 1,
+            }]
+          },
+          options: {
+            scales: {
+              yAxes: [{
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Retweets',
+                }
+              }],
+              xAxes: [{
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Username',
+                }
+              }]
+            },
+            legend: {
+              display: false,
+              position: 'bottom',
+              labels: {
+                fontColor: '#71748d',
+                fontFamily: 'Circular Std Book',
+                fontSize: 15,
+              }
+            },
+            scales: {
+              xAxes: [{
+                ticks: {
+                  fontSize: 10,
+                  fontFamily: 'Circular Std Book',
+                  fontColor: '#71748d',
+                  autoSkip: false,
+                },
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Username',
+                }
+              }],
+              yAxes: [{
+                ticks: {
+                  fontSize: 10,
+                  fontFamily: 'Circular Std Book',
+                  fontColor: '#71748d',
+                },
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Retweets',
+                }
+              }]
+            }
+          }
+        });
+      }
+    };
+
+    $scope.generateKeywordFavoriteBarGraph = function() {
+      if ($('#keyword_like_bar').length) {
+        var handles = $scope.trends.map(a => a.name);
+        var favorites = $scope.trends.map(b => b.favorite_count);
+        var ctx = document.getElementById("keyword_like_bar").getContext('2d');
+        var myChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: handles,
+            datasets: [{
+              data: favorites,
+              backgroundColor: "rgba(89, 105, 255,0.5)",
+              borderColor: "rgba(89, 105, 255,0.7)",
+              borderWidth: 1,
+            }]
+          },
+          options: {
+            scales: {
+              yAxes: [{
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Favorites',
+                }
+              }],
+              xAxes: [{
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Username',
+                }
+              }]
+            },
+            legend: {
+              display: false,
+              position: 'bottom',
+              labels: {
+                fontColor: '#71748d',
+                fontFamily: 'Circular Std Book',
+                fontSize: 15,
+              }
+            },
+            scales: {
+              xAxes: [{
+                ticks: {
+                  fontSize: 10,
+                  fontFamily: 'Circular Std Book',
+                  fontColor: '#71748d',
+                  autoSkip: false,
+                },
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Username',
+                }
+              }],
+              yAxes: [{
+                ticks: {
+                  fontSize: 10,
+                  fontFamily: 'Circular Std Book',
+                  fontColor: '#71748d',
+                },
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Favorites',
+                }
+              }]
+            }
+          }
+        });
+      }
     };
 
     $scope.getTrends = function() {
@@ -91,8 +227,7 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
         $scope.currentLocation.name = $scope.locationSearch.name;
         $scope.trends = res.data;
         $scope.trends.sort((a,b) => (a.tweet_volume > b.tweet_volume) ? -1 : ((b.tweet_volume > a.tweet_volume) ? 1 : 0));
-        console.log($scope.trends);
-	$scope.generateGraph();
+	      $scope.generateTrendBarGraph();
       }, function(err) {
         console.log(err);
         if(err.status === 400) {
@@ -105,6 +240,8 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
       Tweets.searchKeyword($scope.keywordSearch).then(function(res) {
         $scope.tweets = res.data.statuses;
         $scope.currentKeyword.query = $scope.keywordSearch.query;
+        $scope.generateKeywordRetweetBarGraph();
+        $scope.generateKeywordFavoriteBarGraph();
       }, function(err) {
         console.log(err);
       });
