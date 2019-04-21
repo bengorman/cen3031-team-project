@@ -1,4 +1,4 @@
-angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$location','$window','chart.js'
+angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$location','$window','chart.js',
   function($scope, Tweets, $location, $window) {
     $scope.locationSearch = { name: "" };
     $scope.keywordSearch = { query: "" };
@@ -6,7 +6,7 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
     $scope.tweets = [];
     $scope.unavailable = false;
     $scope.currentLocation = { name: "" };
-    
+
     $scope.labels1 = $scope.trends.name;
     $scope.series1 = ['Location Trends'];
     $scope.data1 = $scope.trends.tweet_volume;
