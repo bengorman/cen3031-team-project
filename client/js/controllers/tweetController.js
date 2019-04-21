@@ -14,7 +14,7 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
     $scope.generateGraph = function() {
         if ($('#chartjs_bar').length) {
 		var names = $scope.trends.map(a => a.name);
-		var volume = $scope.trends.map(b => b.tweet_volume);
+		var volumes = $scope.trends.map(b => b.tweet_volume);
                 var ctx = document.getElementById("chartjs_bar").getContext('2d');
                 var myChart = new Chart(ctx, {
                     type: 'bar',
