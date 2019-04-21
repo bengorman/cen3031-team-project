@@ -13,23 +13,19 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
     
     $scope.generateGraph = function() {
         if ($('#chartjs_bar').length) {
+		var names = $scope.trends.map(a => a.name);
+		var volume = $scope.trends.map(b => b.tweet_volume);
                 var ctx = document.getElementById("chartjs_bar").getContext('2d');
                 var myChart = new Chart(ctx, {
                     type: 'bar',
                     data: {
-                        labels: ['test', 'test2'],
+                        labels: names, 
                         datasets: [{
-                            label: $scope.trends[0].name,
-                            data: [$scope.trends[0].tweet_volume],
+                            label: 'Trends',
+                            data: volumes,
                            backgroundColor: "rgba(89, 105, 255,0.5)",
                                     borderColor: "rgba(89, 105, 255,0.7)",
-                            borderWidth: 2
-                        }, {
-                            label: $scope.trends[1].name,
-                            data: [$scope.trends[1].tweet_volume],
-                           backgroundColor: "rgba(255, 64, 123,0.5)",
-                                    borderColor: "rgba(255, 64, 123,0.7)",
-                            borderWidth: 2
+                            borderWidth: 2,
                         }]
                     },
                     options: {
