@@ -1,4 +1,4 @@
-angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$location','$window','chart.js',
+angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$location','$window',/*'chart.js',*/
   function($scope, Tweets, $location, $window) {
     $scope.locationSearch = { name: "" };
     $scope.keywordSearch = { query: "" };
