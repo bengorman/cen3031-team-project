@@ -12,6 +12,8 @@ angular.module('login').controller('LoginController', ['$scope', 'Users', '$loca
       password: null
     };
 
+    $scope.invalid = false;
+
     $scope.addUser = function() {
      Users.create($scope.newUser).then(function() {
        $scope.newUser = {};
@@ -25,11 +27,13 @@ angular.module('login').controller('LoginController', ['$scope', 'Users', '$loca
     $scope.goLogin = function() {
       Users.verify($scope.user).then(function(res) {
         if(res.data.username === $scope.user.username && res.data.password === $scope.user.password) {
+          $scope.invalid = false;
           var newLocation = location.href.substring(0, location.href.lastIndexOf("/"));
           $window.location.href = newLocation+'/dashboard.html';
         }
       }, function(err) {
         console.log(err);
+        $scope.invalid = true;
       });
     };
   }
