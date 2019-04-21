@@ -42,8 +42,14 @@
                 <p>Please enter your user information.</p>
             </div>
             <div class="card-body">
+                <div ng-show="takenUsername" class="alert alert-danger" role="alert">
+                  <strong>Username not available.</strong>
+                </div>
                 <div class="form-group">
                     <input class="form-control form-control-lg" ng-model="newUser.username" type="text" name="nick" required="" placeholder="Username" autocomplete="off">
+                </div>
+                <div ng-show="takenEmail" class="alert alert-danger" role="alert">
+                  <strong>Email already in use.</strong>
                 </div>
                 <div class="form-group">
                     <input class="form-control form-control-lg" ng-model="newUser.email" type="email" name="email" required="" placeholder="E-mail" autocomplete="off">

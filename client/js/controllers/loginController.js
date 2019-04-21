@@ -13,6 +13,8 @@ angular.module('login').controller('LoginController', ['$scope', 'Users', '$loca
     };
 
     $scope.invalid = false;
+    $scope.takenUsername = false;
+    $scope.takenEmail = false;
 
     $scope.addUser = function() {
      Users.create($scope.newUser).then(function() {
@@ -21,6 +23,16 @@ angular.module('login').controller('LoginController', ['$scope', 'Users', '$loca
        $window.location.href = newLocation+'/dashboard.html';
      }, function(err) {
        console.log(err);
+       if(err.data === "There is already an account with this username") {
+         $scope.takenUsername = true;
+       } else {
+         $scope.takenUsername = false;
+       }
+       if(err.data === "There is already an account with this email") {
+         $scope.takenEmail = true;
+       } else {
+         $scope.takenEmail = false;
+       }
      });
     };
 
