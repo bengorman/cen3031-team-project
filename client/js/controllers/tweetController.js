@@ -92,6 +92,7 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
         $scope.trends.sort(function(a, b) {
           return a.tweet_volume > b.tweet_volume;
         });
+        console.log(trends);
 	$scope.generateGraph();
       }, function(err) {
         console.log(err);
