@@ -125,7 +125,7 @@
 					</div>
 				</div>
 				<div class="card">
-                                    <h5 class="card-header">Top Ten Trends In {{ currentLocation.name || "Location" }}</h5>
+                                    <h5 class="card-header">Top Ten Trends in {{ currentLocation.name || "Location" }}</h5>
                                     <div class="card-body p-0">
                                         <ul class="country-sales list-group list-group-flush" ng-repeat="trend in (trends | orderBy: '-tweet_volume'|nullToEnd:'tweet_volume')">
                                             <li class="country-sales-content list-group-item"><span class="mr-2"></span>
@@ -185,7 +185,9 @@
     <script src="assets/libs/js/dashboard-ecommerce.js"></script>
     <!--chart js -->
     <script src="assets/vendor/charts/charts-bundle/Chart.bundle.js"></script>
-    <script src="assets/vendor/charts/charts-bundle/chartjs.js"></script>
+    <!--<script src="assets/vendor/charts/charts-bundle/chartjs.js"></script>-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-chart.js/0.10.2/angular-chart.js"></script>-->
 
     <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
     <script src="js/app.js"></script>

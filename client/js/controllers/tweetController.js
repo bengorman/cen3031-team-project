@@ -1,23 +1,74 @@
-angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$location','$window',/*'chart.js',*/
-  function($scope, Tweets, $location, $window) {
+angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$location','$window','$document',
+  function($scope, Tweets, $location, $window, $document) {
     $scope.locationSearch = { name: "" };
     $scope.keywordSearch = { query: "" }
     $scope.trends = [];
     $scope.tweets = [];
     $scope.unavailable = false;
     $scope.currentLocation = { name: "" };
-    $scope.currentKeyword = { query: "" }
-
+    
     $scope.labels1 = $scope.trends.name;
     $scope.series1 = ['Location Trends'];
     $scope.data1 = $scope.trends.tweet_volume;
     
-        $scope.labels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-    $scope.series = ['Series A', 'Series B'];
-    $scope.data = [
-      [65, 59, 80, 81, 56, 55, 40],
-      [28, 48, 40, 19, 86, 27, 90]
-    ];
+    if ($('#chartjs_bar').length) {
+                var ctx = document.getElementById("chartjs_bar").getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: $scope.trends.name,
+                        datasets: [{
+                            label: $scope.trends[0].name,
+                            data: $scope.trends[0].tweet_volume,
+                           backgroundColor: "rgba(89, 105, 255,0.5)",
+                                    borderColor: "rgba(89, 105, 255,0.7)",
+                            borderWidth: 2
+                        }, {
+                            label: $scope.trends[1].name,
+                            data: $scope.trends[1].tweet_volume,
+                           backgroundColor: "rgba(255, 64, 123,0.5)",
+                                    borderColor: "rgba(255, 64, 123,0.7)",
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+
+                            }]
+                        },
+                             legend: {
+                        display: true,
+                        position: 'bottom',
+
+                        labels: {
+                            fontColor: '#71748d',
+                            fontFamily: 'Circular Std Book',
+                            fontSize: 14,
+                        }
+                    },
+
+                    scales: {
+                        xAxes: [{
+                            ticks: {
+                                fontSize: 14,
+                                fontFamily: 'Circular Std Book',
+                                fontColor: '#71748d',
+                            }
+                        }],
+                        yAxes: [{
+                            ticks: {
+                                fontSize: 14,
+                                fontFamily: 'Circular Std Book',
+                                fontColor: '#71748d',
+                            }
+                        }]
+                    }
+                }
+
+                    
+                });
+            }
 
     $scope.getTrends = function() {
       Tweets.searchLocation($scope.locationSearch).then(function(res) {
