@@ -6,11 +6,11 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
     $scope.tweets = [];
     $scope.unavailable = false;
     $scope.currentLocation = { name: "" };
-    
+
     $scope.labels1 = $scope.trends.name;
     $scope.series1 = ['Location Trends'];
     $scope.data1 = $scope.trends.tweet_volume;
-    
+
     $scope.generateGraph = function() {
         if ($('#chartjs_bar').length) {
 		var names = $scope.trends.map(a => a.name);
@@ -19,7 +19,7 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
                 var myChart = new Chart(ctx, {
                     type: 'bar',
                     data: {
-                        labels: names.slice(0,10), 
+                        labels: names.slice(0,10),
                         datasets: [{
                             data: volumes.slice(0,10),
                            backgroundColor: "rgba(89, 105, 255,0.5)",
@@ -79,16 +79,19 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
                     }
                 }
 
-                    
+
                 });
             }
     };
-    
+
     $scope.getTrends = function() {
       Tweets.searchLocation($scope.locationSearch).then(function(res) {
         $scope.unavailable = false;
         $scope.currentLocation.name = $scope.locationSearch.name;
         $scope.trends = res.data;
+        $scope.trends.sort(function(a, b) {
+          return a.tweet_volume > b.tweet_volume;
+        });
 	$scope.generateGraph();
       }, function(err) {
         console.log(err);
@@ -117,5 +120,4 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
         });
         return present.concat(empty);
     };
-
 });
