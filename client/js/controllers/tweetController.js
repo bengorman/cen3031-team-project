@@ -6,6 +6,7 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
     $scope.tweets = [];
     $scope.unavailable = false;
     $scope.currentLocation = { name: "" };
+    $scope.currentKeyword = { query: "" };
 
     $scope.labels1 = $scope.trends.name;
     $scope.series1 = ['Location Trends'];
