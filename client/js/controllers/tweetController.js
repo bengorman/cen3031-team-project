@@ -1,7 +1,7 @@
 angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$location','$window',
   function($scope, Tweets, $location, $window) {
     $scope.locationSearch = { name: "" };
-    $scope.keywordSearch = { query: "" }
+    $scope.keywordSearch = { query: "" };
     $scope.trends = [];
     $scope.tweets = [];
     $scope.unavailable = false;
