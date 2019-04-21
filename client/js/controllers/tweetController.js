@@ -34,7 +34,6 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
 
     $scope.getTweets = function() {
       Tweets.searchKeyword($scope.keywordSearch).then(function(res) {
-        console.log(res.data);
         $scope.tweets = res.data.statuses;
         $scope.currentKeyword.query = $scope.keywordSearch.query;
       }, function(err) {
