@@ -21,7 +21,6 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
                     data: {
                         labels: names.slice(0,10), 
                         datasets: [{
-                            label: 'Trends',
                             data: volumes.slice(0,10),
                            backgroundColor: "rgba(89, 105, 255,0.5)",
                                     borderColor: "rgba(89, 105, 255,0.7)",
@@ -31,7 +30,16 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
                     options: {
                         scales: {
                             yAxes: [{
-
+				scaleLabel: {
+					display: true,
+					labelString: 'Tweet Volume',
+				}
+                            }],
+			    xAxes: [{
+				scaleLabel: {
+					display: true,
+					labelString: 'Trends',
+				}
                             }]
                         },
                              legend: {
