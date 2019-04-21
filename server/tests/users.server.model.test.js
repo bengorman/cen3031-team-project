@@ -4,7 +4,7 @@ var should = require('should'),
     SHA256 = require('crypto-js/sha256')
     config = require('../config/config');
 
-var listing, id;
+var id;
 
 user =  {
   email: "test1@gmail.com",
@@ -59,7 +59,7 @@ describe('User Schema Unit Tests', function() {
     it('saves properly when all three properties provided', function(done){
       user.password = SHA256(user.password);
       var newUser = new User(user);
-      new User(newUser).save(function(err, listing){
+      new User(newUser).save(function(err, user){
         should.not.exist(err);
         id = user._id;
         done();
@@ -68,14 +68,16 @@ describe('User Schema Unit Tests', function() {
 
   });
 
-  /*afterEach(function(done) {
+  after(function(done) {
     if(id) {
-      User.remove({ _id: id }).exec(function() {
-        id = null;
+      User.remove({username: 'test1'}, function(err) {
+        if (err)
+          throw err;
         done();
-      });
+      })
     } else {
       done();
     }
-  });*/
+  });
+
 });

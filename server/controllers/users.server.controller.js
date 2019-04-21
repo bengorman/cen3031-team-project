@@ -23,8 +23,15 @@ exports.create = function(req, res) {
   /* Then save the user */
   user.save(function(err) {
     if(err) {
-      console.log(err);
-      res.status(400).send(err);
+      var statusMessage = '';
+      if (err.message.includes('username')) {
+        statusMessage = 'There is already an account with this username';
+      } else if (err.message.includes('email')) {
+	statusMessage = 'There is already an account with this email';
+      } else {
+	statusMessage = 'Unknown error has occured';
+      }
+      res.status(400).send(statusMessage);
     } else {
       res.json(tempUser);
     }
