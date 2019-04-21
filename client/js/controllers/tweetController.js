@@ -89,7 +89,7 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
         $scope.unavailable = false;
         $scope.currentLocation.name = $scope.locationSearch.name;
         $scope.trends = res.data;
-        $scope.trends.sort((a,b) => (a.tweet_volume > b.tweet_volume) ? 1 : ((b.tweet_volume > a.tweet_volume) ? -1 : 0));
+        $scope.trends.sort((a,b) => (a.tweet_volume > b.tweet_volume) ? -1 : ((b.tweet_volume > a.tweet_volume) ? 1 : 0));
         console.log($scope.trends);
 	$scope.generateGraph();
       }, function(err) {
