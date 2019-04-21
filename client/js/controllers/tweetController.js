@@ -11,7 +11,8 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
     $scope.series1 = ['Location Trends'];
     $scope.data1 = $scope.trends.tweet_volume;
     
-    if ($('#chartjs_bar').length) {
+    $scope.generateGraph = function() {
+        if ($('#chartjs_bar').length) {
                 var ctx = document.getElementById("chartjs_bar").getContext('2d');
                 var myChart = new Chart(ctx, {
                     type: 'bar',
@@ -69,12 +70,14 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
                     
                 });
             }
-
+    };
+    
     $scope.getTrends = function() {
       Tweets.searchLocation($scope.locationSearch).then(function(res) {
         $scope.unavailable = false;
         $scope.currentLocation.name = $scope.locationSearch.name;
         $scope.trends = res.data;
+	$scope.generateGraph();
       }, function(err) {
         console.log(err);
         if(err.status === 400) {
@@ -102,4 +105,5 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
         });
         return present.concat(empty);
     };
+
 });
