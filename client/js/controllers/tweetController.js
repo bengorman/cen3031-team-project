@@ -49,7 +49,7 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
                         labels: {
                             fontColor: '#71748d',
                             fontFamily: 'Circular Std Book',
-                            fontSize: 10,
+                            fontSize: 15,
                         }
                     },
 
