@@ -86,6 +86,8 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
       if ($('#keyword_retweet_bar').length) {
         var handles = $scope.trends.map(a => a.name);
         var retweets = $scope.trends.map(b => b.retweet_count);
+        console.log(handles);
+        console.log(retweets);
         var ctx = document.getElementById("keyword_retweet_bar").getContext('2d');
         var myChart = new Chart(ctx, {
           type: 'bar',
@@ -241,6 +243,7 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
       Tweets.searchKeyword($scope.keywordSearch).then(function(res) {
         $scope.tweets = res.data.statuses;
         $scope.currentKeyword.query = $scope.keywordSearch.query;
+        console.log(tweets);
         $scope.generateKeywordRetweetBarGraph();
         $scope.generateKeywordFavoriteBarGraph();
       }, function(err) {
