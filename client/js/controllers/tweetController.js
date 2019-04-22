@@ -243,7 +243,7 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
       Tweets.searchKeyword($scope.keywordSearch).then(function(res) {
         $scope.tweets = res.data.statuses;
         $scope.currentKeyword.query = $scope.keywordSearch.query;
-        console.log(tweets);
+        console.log($scope.tweets);
         $scope.generateKeywordRetweetBarGraph();
         $scope.generateKeywordFavoriteBarGraph();
       }, function(err) {
