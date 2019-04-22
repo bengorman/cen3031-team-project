@@ -1,5 +1,4 @@
 /* register the modules the application depends upon here*/
-angular.module('listings', []);
 angular.module('login', []);
 angular.module('tweets', []);
 
