@@ -84,7 +84,7 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
 
     $scope.generateKeywordRetweetBarGraph = function() {
       if ($('#keyword_retweet_bar').length) {
-        var handles = $scope.tweets.map(a => a.name);
+        var handles = $scope.tweets.map(a => a.user.name);
         var retweets = $scope.tweets.map(b => b.retweet_count);
         console.log(handles);
         console.log(retweets);
@@ -156,7 +156,7 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
 
     $scope.generateKeywordFavoriteBarGraph = function() {
       if ($('#keyword_like_bar').length) {
-        var handles = $scope.tweets.map(a => a.name);
+        var handles = $scope.tweets.map(a => a.user.name);
         var favorites = $scope.tweets.map(b => b.favorite_count);
         var ctx = document.getElementById("keyword_like_bar").getContext('2d');
         var myChart = new Chart(ctx, {
