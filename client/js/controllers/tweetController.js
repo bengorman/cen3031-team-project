@@ -12,12 +12,17 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
     $scope.series1 = ['Location Trends'];
     $scope.data1 = $scope.trends.tweet_volume;
 
+    $scope.myChart = null;
+    $scope.myChart1 = null;
+    $scope.myChart2 = null;
+
     $scope.generateTrendBarGraph = function() {
       if ($('#trend_bar').length) {
         var names = $scope.trends.map(a => a.name);
         var volumes = $scope.trends.map(b => b.tweet_volume);
         var ctx = document.getElementById("trend_bar").getContext('2d');
-        var myChart = new Chart(ctx, {
+        if(!$scope.myChart) {
+        $scope.myChart = new Chart(ctx, {
           type: 'bar',
           data: {
             labels: names.slice(0,10),
@@ -79,6 +84,11 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
             }
           }
         });
+      } else {
+        $scope.myChart.data.labels = names.slice(0,10);
+        $scope.myChart.data.datasets[0].data = volumes.slice(0,10);
+        $scope.myChart.update();
+      }
       }
     };
 
@@ -87,7 +97,8 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
         var handles = $scope.tweets.map(a => a.user.name);
         var retweets = $scope.tweets.map(b => b.retweet_count);
         var ctx = document.getElementById("keyword_retweet_bar").getContext('2d');
-        var myChart1 = new Chart(ctx, {
+        if(!$scope.myChart1) {
+        $scope.myChart1 = new Chart(ctx, {
           type: 'bar',
           data: {
             labels: handles,
@@ -149,15 +160,22 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
             }
           }
         });
+      } else {
+        $scope.myChart1.data.labels = handles;
+        $scope.myChart1.data.datasets[0].data = retweets;
+        $scope.myChart1.update();
+      }
       }
     };
 
     $scope.generateKeywordFavoriteBarGraph = function() {
+      //window.location.reload();
       if ($('#keyword_like_bar').length) {
         var handles = $scope.tweets.map(a => a.user.name);
         var favorites = $scope.tweets.map(b => b.favorite_count);
         var ctx = document.getElementById("keyword_like_bar").getContext('2d');
-        var myChart2 = new Chart(ctx, {
+        if(!$scope.myChart2) {
+        $scope.myChart2 = new Chart(ctx, {
           type: 'bar',
           data: {
             labels: handles,
@@ -219,6 +237,11 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
             }
           }
         });
+      } else {
+        $scope.myChart1.data.labels = handles;
+        $scope.myChart1.data.datasets[0].data = favorites;
+        $scope.myChart1.update();
+      }
       }
     };
 
