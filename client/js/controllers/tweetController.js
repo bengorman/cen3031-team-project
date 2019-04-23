@@ -97,6 +97,7 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
         var handles = $scope.tweets.map(a => a.user.name);
         var retweets = $scope.tweets.map(b => b.retweet_count);
         var ctx = document.getElementById("keyword_retweet_bar").getContext('2d');
+        if(!$scope.myChart1) {
         $scope.myChart1 = new Chart(ctx, {
           type: 'bar',
           data: {
@@ -159,6 +160,11 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
             }
           }
         });
+      } else {
+        $scope.myChart1.data.labels = handles;
+        $scope.myChart1.data.datasets[0].data = retweets;
+        $scope.myChart1.update();
+      }
       }
     };
 
@@ -168,6 +174,7 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
         var handles = $scope.tweets.map(a => a.user.name);
         var favorites = $scope.tweets.map(b => b.favorite_count);
         var ctx = document.getElementById("keyword_like_bar").getContext('2d');
+        if(!$scope.myChart2) {
         $scope.myChart2 = new Chart(ctx, {
           type: 'bar',
           data: {
@@ -230,6 +237,11 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
             }
           }
         });
+      } else {
+        $scope.myChart1.data.labels = handles;
+        $scope.myChart1.data.datasets[0].data = favorites;
+        $scope.myChart1.update();
+      }
       }
     };
 
