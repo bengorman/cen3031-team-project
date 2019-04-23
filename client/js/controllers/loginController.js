@@ -27,9 +27,10 @@ angular.module('login').controller('LoginController', ['$scope', 'Users', '$loca
         $scope.passwordMismatch = false;
       }
       if(!$scope.terms.agree) {
-        terms.alert = true;
+        $scope.terms.alert = true;
+        return;
       } else {
-        terms.alert = false;
+        $scope.terms.alert = false;
       }
      Users.create($scope.newUser).then(function() {
        $scope.newUser = {};
