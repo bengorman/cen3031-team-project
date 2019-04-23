@@ -57,15 +57,21 @@
                 <div class="form-group">
                     <input class="form-control form-control-lg" ng-model="newUser.password" id="pass1" type="password" required="" placeholder="Password">
                 </div>
+                <div ng-show="passwordMismatch" class="alert alert-danger" role="alert">
+                  <strong>Passwords do not match.</strong>
+                </div>
                 <div class="form-group">
-                    <input class="form-control form-control-lg" required="" placeholder="Confirm">
+                    <input class="form-control form-control-lg" ng-model="confirmPassword.text" id="pass2" type="password" required="" placeholder="Confirm">
                 </div>
                 <div class="form-group pt-2">
                     <button class="btn btn-block btn-primary" ng-click="addUser()" type="submit">Register My Account</button>
                 </div>
                 <div class="form-group">
+                  <div ng-show="terms.alert" class="alert alert-danger" role="alert">
+                    <strong>You must agree to the terms and conditions to create an account.</strong>
+                  </div>
                     <label class="custom-control custom-checkbox">
-                        <input class="custom-control-input" type="checkbox"><span class="custom-control-label">By creating an account, you agree the <a href="#">terms and conditions</a></span>
+                        <input class="custom-control-input" type="checkbox" ng-click="terms.agree"><span class="custom-control-label">By creating an account, you agree the <a href="#">terms and conditions</a></span>
                     </label>
                 </div>
             </div>
