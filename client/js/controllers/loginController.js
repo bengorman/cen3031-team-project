@@ -17,7 +17,6 @@ angular.module('login').controller('LoginController', ['$scope', 'Users', '$loca
     $scope.takenEmail = false;
     $scope.passwordMismatch = false;
     $scope.confirmPassword = { text: "" };
-    $scope.terms = { agree: false, alert: false};
 
     $scope.addUser = function() {
       if($scope.confirmPassword.text != $scope.newUser.password) {
@@ -25,12 +24,6 @@ angular.module('login').controller('LoginController', ['$scope', 'Users', '$loca
         return;
       } else {
         $scope.passwordMismatch = false;
-      }
-      if(!$scope.terms.agree) {
-        $scope.terms.alert = true;
-        return;
-      } else {
-        $scope.terms.alert = false;
       }
      Users.create($scope.newUser).then(function() {
        $scope.newUser = {};
