@@ -228,7 +228,7 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
         $scope.currentLocation.name = $scope.locationSearch.name;
         $scope.trends = res.data;
         $scope.trends.sort((a,b) => (a.tweet_volume > b.tweet_volume) ? -1 : ((b.tweet_volume > a.tweet_volume) ? 1 : 0));
-        delete myChart;
+        console.log(myChart);
 	      $scope.generateTrendBarGraph();
       }, function(err) {
         console.log(err);
