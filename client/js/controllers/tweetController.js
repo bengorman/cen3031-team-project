@@ -228,7 +228,6 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
         $scope.currentLocation.name = $scope.locationSearch.name;
         $scope.trends = res.data;
         $scope.trends.sort((a,b) => (a.tweet_volume > b.tweet_volume) ? -1 : ((b.tweet_volume > a.tweet_volume) ? 1 : 0));
-        console.log(myChart);
 	      $scope.generateTrendBarGraph();
       }, function(err) {
         console.log(err);
@@ -243,10 +242,8 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
         $scope.tweets = res.data.statuses;
         $scope.currentKeyword.query = $scope.keywordSearch.query;
         $scope.tweets.sort((a,b) => (a.retweet_count > b.retweet_count) ? -1 : ((b.retweet_count > a.retweet_count) ? 1 : 0));
-        delete myChart1;
         $scope.generateKeywordRetweetBarGraph();
         $scope.tweets.sort((a,b) => (a.favorite_count > b.favorite_count) ? -1 : ((b.favorite_count > a.favorite_count) ? 1 : 0));
-        delete myChart2;
         $scope.generateKeywordFavoriteBarGraph();
       }, function(err) {
         console.log(err);
