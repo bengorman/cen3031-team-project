@@ -12,16 +12,16 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
     $scope.series1 = ['Location Trends'];
     $scope.data1 = $scope.trends.tweet_volume;
 
-    $scope.myChart;
-    $scope.myChart1;
-    $scope.myChart2;
+    $scope.myChart = null;
+    $scope.myChart1 = null;
+    $scope.myChart2 = null;
 
     $scope.generateTrendBarGraph = function() {
       if ($('#trend_bar').length) {
-	//window.location.reload();
         var names = $scope.trends.map(a => a.name);
         var volumes = $scope.trends.map(b => b.tweet_volume);
         var ctx = document.getElementById("trend_bar").getContext('2d');
+        if(!myChart) {
         $scope.myChart = new Chart(ctx, {
           type: 'bar',
           data: {
@@ -84,6 +84,11 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
             }
           }
         });
+      } else {
+        $scope.myChart.data.labels = names.slice(0,10);
+        $scope.myChart.data.datasets[0].data = volumes.slice(0,10);
+        $scope.myChart.update();
+      }
       }
     };
 
@@ -234,7 +239,6 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
         $scope.currentLocation.name = $scope.locationSearch.name;
         $scope.trends = res.data;
         $scope.trends.sort((a,b) => (a.tweet_volume > b.tweet_volume) ? -1 : ((b.tweet_volume > a.tweet_volume) ? 1 : 0));
-        console.log($scope.myChart);
 	      $scope.generateTrendBarGraph();
       }, function(err) {
         console.log(err);
