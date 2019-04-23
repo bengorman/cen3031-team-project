@@ -12,13 +12,17 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
     $scope.series1 = ['Location Trends'];
     $scope.data1 = $scope.trends.tweet_volume;
 
+    $scope.myChart;
+    $scope.myChart1;
+    $scope.myChart2;
+
     $scope.generateTrendBarGraph = function() {
       if ($('#trend_bar').length) {
 	window.location.reload();
         var names = $scope.trends.map(a => a.name);
         var volumes = $scope.trends.map(b => b.tweet_volume);
         var ctx = document.getElementById("trend_bar").getContext('2d');
-        var myChart = new Chart(ctx, {
+        $scope.myChart = new Chart(ctx, {
           type: 'bar',
           data: {
             labels: names.slice(0,10),
@@ -88,7 +92,7 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
         var handles = $scope.tweets.map(a => a.user.name);
         var retweets = $scope.tweets.map(b => b.retweet_count);
         var ctx = document.getElementById("keyword_retweet_bar").getContext('2d');
-        var myChart = new Chart(ctx, {
+        $scope.myChart1 = new Chart(ctx, {
           type: 'bar',
           data: {
             labels: handles,
@@ -159,7 +163,7 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
         var handles = $scope.tweets.map(a => a.user.name);
         var favorites = $scope.tweets.map(b => b.favorite_count);
         var ctx = document.getElementById("keyword_like_bar").getContext('2d');
-        var myChart = new Chart(ctx, {
+        $scope.myChart1 = new Chart(ctx, {
           type: 'bar',
           data: {
             labels: handles,
@@ -230,6 +234,7 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
         $scope.currentLocation.name = $scope.locationSearch.name;
         $scope.trends = res.data;
         $scope.trends.sort((a,b) => (a.tweet_volume > b.tweet_volume) ? -1 : ((b.tweet_volume > a.tweet_volume) ? 1 : 0));
+        delete $scope.myChart;
 	      $scope.generateTrendBarGraph();
       }, function(err) {
         console.log(err);
@@ -244,8 +249,10 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
         $scope.tweets = res.data.statuses;
         $scope.currentKeyword.query = $scope.keywordSearch.query;
         $scope.tweets.sort((a,b) => (a.retweet_count > b.retweet_count) ? -1 : ((b.retweet_count > a.retweet_count) ? 1 : 0));
+        delete $scope.myChart1;
         $scope.generateKeywordRetweetBarGraph();
         $scope.tweets.sort((a,b) => (a.favorite_count > b.favorite_count) ? -1 : ((b.favorite_count > a.favorite_count) ? 1 : 0));
+        delete $scope.myChart2;
         $scope.generateKeywordFavoriteBarGraph();
       }, function(err) {
         console.log(err);
