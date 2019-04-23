@@ -87,7 +87,7 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
         var handles = $scope.tweets.map(a => a.user.name);
         var retweets = $scope.tweets.map(b => b.retweet_count);
         var ctx = document.getElementById("keyword_retweet_bar").getContext('2d');
-        var myChart = new Chart(ctx, {
+        var myChart1 = new Chart(ctx, {
           type: 'bar',
           data: {
             labels: handles,
@@ -157,7 +157,7 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
         var handles = $scope.tweets.map(a => a.user.name);
         var favorites = $scope.tweets.map(b => b.favorite_count);
         var ctx = document.getElementById("keyword_like_bar").getContext('2d');
-        var myChart = new Chart(ctx, {
+        var myChart2 = new Chart(ctx, {
           type: 'bar',
           data: {
             labels: handles,
