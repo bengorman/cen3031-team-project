@@ -15,8 +15,16 @@ angular.module('login').controller('LoginController', ['$scope', 'Users', '$loca
     $scope.invalid = false;
     $scope.takenUsername = false;
     $scope.takenEmail = false;
+    $scope.passwordMismatch = false;
+    $scope.confirmPassword = { text: "" };
 
     $scope.addUser = function() {
+      if($scope.confirmPassword.text != $scope.newUser.password) {
+        $scope.passwordMismatch = true;
+        return;
+      } else {
+        $scope.passwordMismatch = false;
+      }
      Users.create($scope.newUser).then(function() {
        $scope.newUser = {};
        var newLocation = location.href.substring(0, location.href.lastIndexOf("/"));
