@@ -18,7 +18,7 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
 
     $scope.generateTrendBarGraph = function() {
       if ($('#trend_bar').length) {
-	window.location.reload();
+	//window.location.reload();
         var names = $scope.trends.map(a => a.name);
         var volumes = $scope.trends.map(b => b.tweet_volume);
         var ctx = document.getElementById("trend_bar").getContext('2d');
@@ -158,7 +158,7 @@ angular.module('tweets').controller('TweetController', ['$scope', 'Tweets', '$lo
     };
 
     $scope.generateKeywordFavoriteBarGraph = function() {
-      window.location.reload();
+      //window.location.reload();
       if ($('#keyword_like_bar').length) {
         var handles = $scope.tweets.map(a => a.user.name);
         var favorites = $scope.tweets.map(b => b.favorite_count);
